@@ -6,7 +6,7 @@ import { MdOutlineDone } from "react-icons/md";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const index = (props: any) => {
+const Index = (props: any) => {
   const [title, setTitle] = useState("");
   const router = useRouter();
 
@@ -105,4 +105,4 @@ export async function getServerSideProps(context: any) {
   };
 }
 
-export default index;
+export default Index;
