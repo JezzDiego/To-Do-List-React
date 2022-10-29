@@ -9,7 +9,8 @@ const Home = (todos: any) => {
   const [title, setTitle] = useState("");
   const [list, setList] = useState(todos.todos);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
     if (title == "") {
       alert("Preencha o campo!");
     } else {
@@ -18,6 +19,7 @@ const Home = (todos: any) => {
       };
       await axios.post(`${process.env.API_URL}todos`, todo);
     }
+    location.reload();
   };
 
   const handleSelect = async (e: any) => {
@@ -52,7 +54,9 @@ const Home = (todos: any) => {
 
         <div className={styles.formHeaderSection}>
           <form
-            onSubmit={handleSubmit}
+            onSubmit={async (e) => {
+              handleSubmit(e);
+            }}
             className={`${styles.todoForm} ${styles.form}`}
           >
             <p className={styles.p}>Adicione sua tarefa</p>
